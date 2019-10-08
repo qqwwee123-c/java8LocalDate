@@ -14,7 +14,6 @@ public class shortSubString {
 
     public static int lengthOfLongestSubstring(String s) {
 
-
         int n = s.length();
         Set<Character> set = new HashSet<>();
         int ans = 0, i = 0, j = 0;
@@ -28,7 +27,6 @@ public class shortSubString {
             }
         }
         return ans;
-
 
     }
 }
