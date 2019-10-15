@@ -13,8 +13,8 @@ public class localDateTimeTest {
 
 
 //        calculate();
-    format();
-
+//    format();
+        aboutGet();
 
     }
     private static void aboutGet(){
@@ -47,18 +47,18 @@ public class localDateTimeTest {
         LocalDate localDate = LocalDate.now();
         String s1 = localDate.format(DateTimeFormatter.BASIC_ISO_DATE);
         String s2 = localDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
-        System.out.println(s1);
-        System.out.println(s2);
+        System.out.println(s1); //20191015
+        System.out.println(s2); //2019-10-15
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String s3 = localDate.format(dateTimeFormatter);
-        System.out.println(s3);
+        System.out.println(s3); //15/10/2019
 
         String s4 = localDate.format(DateTimeFormatter.ISO_DATE);
-        System.out.println(s4);
+        System.out.println(s4); //2019-10-15
 
         DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         String s5 = localDate.format(dateTimeFormatter1);
-        System.out.println(s5);
+        System.out.println(s5); //2019/10/15
 
     }
 }

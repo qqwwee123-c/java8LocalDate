@@ -7,6 +7,6 @@ public class enumTest {
         System.out.println(UserStatus.DISABLE.getValue());
         System.out.println(UserStatus.DISABLE.getDecoration());
 
-        
+
     }
 }
