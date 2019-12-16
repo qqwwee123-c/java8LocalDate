@@ -40,7 +40,16 @@ public class testStream {
 //        System.out.println("平均数 : " + intSummaryStatistics.getAverage());
         String[] words = new String[]{"Hello","World"};
         Stream<String[]> stream2 = Arrays.asList(words).stream().map(word -> word.split(""));
+        List<String[]> collect4 = stream2.collect(Collectors.toList());
+        collect4.forEach(s -> {
+            for (String s1:s) {
+                System.out.println(s1);
+            }
+            System.out.println("--------");
+        });
+        //flat将多个Stream《String》 拼成一个  stream |    Arrays::stream 将数组专程stream
         List<String> collect3 = Arrays.asList(words).stream().map(word -> word.split("")).flatMap(Arrays::stream).distinct().collect(Collectors.toList());
+        System.out.println();
         collect3.forEach(s -> System.out.println(s));
 
     }

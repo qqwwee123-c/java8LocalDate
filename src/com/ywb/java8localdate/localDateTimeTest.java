@@ -18,8 +18,12 @@ public class localDateTimeTest {
 
     }
     private static void aboutGet(){
+
         LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         System.out.println(localDateTime);
+        System.out.println(localDateTime.format(dateTimeFormatter));
+        System.out.println(localDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE));
         LocalDateTime localDateTime1 = LocalDateTime.of(2019,8,5,10,21);
         System.out.println(localDateTime1);
         System.out.println(localDateTime1.getChronology());
