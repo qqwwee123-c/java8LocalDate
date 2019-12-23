@@ -16,6 +16,9 @@ public class testStream {
         System.out.println(collect);
         List<Student> students = ititList();
         Stream<Student> stream1 = students.stream();
+        stream1.forEach(s ->{
+            System.out.println(s);
+        });
         List<Student> collect1 = stream1.filter(s -> s.getAge() > 17).distinct().sorted(Comparator.comparing(Student::getAge)).collect(Collectors.toList());
         System.out.println(collect1.size());
         // System.out.println(collect1.get(1).getName());
