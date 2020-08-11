@@ -11,14 +11,15 @@ public class testStream {
         //testList();
         streamDemo();
     }
-    public static void testList(){
-        List list = Arrays.asList("zhangsan","lisi","wangwu");
+
+    public static void testList() {
+        List list = Arrays.asList("zhangsan", "lisi", "wangwu");
         Stream stream = list.stream();
         Object collect = stream.filter(name -> name != "lisi").collect(Collectors.toList());
         System.out.println(collect);
         List<Student> students = ititList();
         Stream<Student> stream1 = students.stream();
-        stream1.forEach(s ->{
+        stream1.forEach(s -> {
             System.out.println(s);
         });
         List<Student> collect1 = stream1.filter(s -> s.getAge() > 17).distinct().sorted(Comparator.comparing(Student::getAge)).collect(Collectors.toList());
@@ -43,11 +44,11 @@ public class testStream {
 //        System.out.println("年龄中最小的数 : " + intSummaryStatistics.getMin());
 //        System.out.println("所有数之和 : " + intSummaryStatistics.getSum());
 //        System.out.println("平均数 : " + intSummaryStatistics.getAverage());
-        String[] words = new String[]{"Hello","World"};
+        String[] words = new String[]{"Hello", "World"};
         Stream<String[]> stream2 = Arrays.asList(words).stream().map(word -> word.split(""));
         List<String[]> collect4 = stream2.collect(Collectors.toList());
         collect4.forEach(s -> {
-            for (String s1:s) {
+            for (String s1 : s) {
                 System.out.println(s1);
             }
             System.out.println("--------");
@@ -58,7 +59,8 @@ public class testStream {
         collect3.forEach(s -> System.out.println(s));
 
     }
-    public static List<Student> ititList(){
+
+    public static List<Student> ititList() {
         List<Student> students = new ArrayList<>();
         Student s1 = new Student();
         s1.setName("zhangsan");
@@ -78,8 +80,8 @@ public class testStream {
         return students;
     }
 
-    public static void streamDemo(){
-        List<Student>  students = ititList();
+    public static void streamDemo() {
+        List<Student> students = ititList();
         //男生人数
         Long count = students.stream().filter(student -> student.getSex() == 1).collect(Collectors.counting());
         System.out.println(count);
@@ -87,9 +89,47 @@ public class testStream {
 
         //大于15岁的人平均年龄
         System.out.println(students.stream().filter(student -> student.getAge() > 15).collect(Collectors.averagingInt(Student::getAge)));
+        System.out.println(students.stream().filter(student -> student.getAge() > 15).collect(Collectors.summarizingInt(Student::getAge)).getAverage());
+        System.out.println(students.stream().filter(student -> student.getAge() > 15).mapToInt(Student::getAge).average().getAsDouble());
+
+        //求和
+        System.out.println(students.stream().filter(student -> student.getAge() > 15).collect(Collectors.summingInt(Student::getAge)));
+
+        //数据统计相关的东西都有
+        IntSummaryStatistics collect = students.stream().filter(student -> student.getAge() > 15).collect(Collectors.summarizingInt(Student::getAge));
+
+        //最小
+        System.out.println(students.stream().filter(student -> student.getAge() > 15).map(student -> student.getAge()).
+                collect(Collectors.minBy(Integer::compareTo)).get());
+        System.out.println(students.stream().filter(student -> student.getAge() > 15).map(student -> student.getAge()).
+                collect(Collectors.maxBy(Integer::compareTo)));
+
+        //分组
+        Map<Integer, List<Student>> collect1 = students.stream().collect(Collectors.groupingBy(Student::getSex));
+        System.out.println(collect1);
+
+        Map<String, List<Student>> collect2 = students.stream().collect(Collectors.groupingBy(s -> {
+            if (s.getSex() == 0) {
+                return "女";
+            } else if (s.getSex() == 1) {
+                return "男";
+            } else {
+                return "未知";
+            }
+        }));
+        System.out.println(collect2);
+        collect2.forEach((a,b) -> {
+            System.out.println(a);
+            b.forEach(System.out::println);
+        });
+
+        //分区  分区通过 表达式true flase 判断分区
+        Map<Boolean, List<Student>> collect3 = students.stream().collect(Collectors.partitioningBy(s -> s.getAge() >15));
+        System.out.println(collect3);
 
     }
 }
+
 class Student {
     String name;
     int age;
@@ -117,5 +157,14 @@ class Student {
 
     public void setSex(int sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                '}';
     }
 }
