@@ -7,7 +7,9 @@ import java.util.stream.Stream;
 
 public class testStream {
     public static void main(String[] args) {
-        testList();
+
+        //testList();
+        streamDemo();
     }
     public static void testList(){
         List list = Arrays.asList("zhangsan","lisi","wangwu");
@@ -74,6 +76,18 @@ public class testStream {
         s3.setSex(0);
         students.add(s3);
         return students;
+    }
+
+    public static void streamDemo(){
+        List<Student>  students = ititList();
+        //男生人数
+        Long count = students.stream().filter(student -> student.getSex() == 1).collect(Collectors.counting());
+        System.out.println(count);
+        System.out.println(students.stream().filter(student -> student.getSex() == 1).count());
+
+        //大于15岁的人平均年龄
+        System.out.println(students.stream().filter(student -> student.getAge() > 15).collect(Collectors.averagingInt(Student::getAge)));
+
     }
 }
 class Student {
