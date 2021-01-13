@@ -9,7 +9,11 @@ public class testStream {
     public static void main(String[] args) {
 
         //testList();
-        streamDemo();
+//        streamDemo();
+//        List<Map<String,String>> list = new ArrayList<>();
+//        list.stream().
+        String s = "伊文彬123";
+        System.out.println(s.length());
     }
 
     public static void testList() {
@@ -126,7 +130,8 @@ public class testStream {
         //分区  分区通过 表达式true flase 判断分区
         Map<Boolean, List<Student>> collect3 = students.stream().collect(Collectors.partitioningBy(s -> s.getAge() >15));
         System.out.println(collect3);
-
+        //判断是否存在某个元素
+//        students.stream().allMatch()
     }
 }
 

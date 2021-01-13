@@ -1,6 +1,7 @@
 package com.ywb.java8localdate;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class dateTime {
@@ -18,7 +19,6 @@ public class dateTime {
         System.out.println(localDate1.getDayOfMonth());
         System.out.println(localDate1.getDayOfWeek()); //day name
         System.out.println(localDate1.atStartOfDay());
-
 
 
     }
