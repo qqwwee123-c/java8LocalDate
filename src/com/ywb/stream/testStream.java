@@ -12,8 +12,18 @@ public class testStream {
 //        streamDemo();
 //        List<Map<String,String>> list = new ArrayList<>();
 //        list.stream().
-        String s = "伊文彬123";
-        System.out.println(s.length());
+//        String s = "伊文彬123";
+//        System.out.println(s.length());
+        testGroup();
+    }
+
+    public static void testGroup(){
+        List<Student> students = ititList();
+        Map<Object, List<Student>> collect = students.stream().collect(Collectors.groupingBy(item -> {
+            System.out.println(item);
+            return item.getSex();
+        }));
+        System.out.println(collect);
     }
 
     public static void testList() {
@@ -80,6 +90,12 @@ public class testStream {
         s3.setName("xiaomei");
         s3.setAge(18);
         s3.setSex(0);
+        students.add(s3);
+
+        Student s4 = new Student();
+        s4.setName("s4");
+        s4.setAge(18);
+        s4.setSex(0);
         students.add(s3);
         return students;
     }
