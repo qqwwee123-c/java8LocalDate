@@ -12,12 +12,14 @@ public class IntegetTest {
         Integer i3 = new Integer(10);
         Integer i4 = new Integer(10);
         boolean result2 = i3 == i4;
+        // i3.equals() 源码一看就懂了 😄
         System.out.println("i3 == i4 ?  "+ result2);
 
         Integer i5 = 129;
         Integer i6 = 129;
         boolean result3 = i5 == i6;
         System.out.println("i5 == i6 ?  "+result3 );
+
 
     }
 }
