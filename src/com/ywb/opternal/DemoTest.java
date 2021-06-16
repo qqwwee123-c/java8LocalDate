@@ -39,7 +39,21 @@ public class DemoTest {
         ).isPresent();
         System.out.println(present);
 
+// cat= null ofnullable生成的optional也不会空指针  ，但是of生成的会报空指针  牛逼啊
+//        Optional<Cat> cat4 = Optional.of(cat);
+//        boolean present2 = cat4.map(Cat::getId).filter(value -> value > 3).isPresent();
+//        System.out.println(present);
 
 
+        Cat cat5 = new Cat(55, "catklav", "济南1", 24);
+        Optional.ofNullable(cat5).filter(catlambda -> "catklav".equals(catlambda.getName())).orElseThrow(() -> new RuntimeException());
+
+
+//        Cat cat6 = new Cat(56, "catklav", "济南1", 24);
+        Cat cat6 = null;
+        Optional.ofNullable(cat6).filter(catlambda -> "catklav".equals(catlambda.getName())).ifPresent(System.out::println);
+
+        Optional<Cat> cat4 = Optional.ofNullable(new Cat(1, "a", "b", 2));
+//        cat4.
     }
 }

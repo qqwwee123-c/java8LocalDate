@@ -31,7 +31,7 @@ public class Test1 {
         //------------------------------------------
         String klav2 = klav.orElseGet(() -> "klav2");
         System.out.println(klav2);
-        Object orElseGet = empty.orElseGet(() -> "你大爷");
+        Object orElseGet = empty.orElseGet(Test1::getString);
         System.out.println(orElseGet);
         //-----------------------------
         String klav3 = klav.orElseThrow(() -> new RuntimeException("klav"));
@@ -39,5 +39,9 @@ public class Test1 {
 //        Object empty1 = empty.orElseThrow(() -> new RuntimeException("empty"));
 //        System.out.println(empty1);
         //-----------------------------------
+    }
+
+    public static String getString() {
+        return "哈哈";
     }
 }
