@@ -10,6 +10,7 @@ public class IntegetTest {
 
         // new 出来的就不会去取常量池的数据了
         Integer i3 = new Integer(10);
+//        Integer.valueOf()
         Integer i4 = new Integer(10);
         boolean result2 = i3 == i4;
         // i3.equals() 源码一看就懂了 😄

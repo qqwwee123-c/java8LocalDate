@@ -1,17 +1,20 @@
-package com.ywb.concurr;
+package com.ywb.threadpool;
 
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
-public class concurrTest {
+public class Test2 {
+
     public static void main(String[] args) {
-        ConcurrentHashMap<String,String> c = new ConcurrentHashMap<>();
-//        c.forEach();
-//        new ThreadPoolExecutor(3,);
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        ThreadPoolExecutor executorService = (ThreadPoolExecutor)Executors.newFixedThreadPool(8);
         executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+        executorService.submit(new Runnable() {
             @Override
             public void run() {
 
