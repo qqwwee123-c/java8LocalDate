@@ -9,12 +9,12 @@ public class testStream {
     public static void main(String[] args) {
 
         //testList();
-//        streamDemo();
+        streamDemo();
 //        List<Map<String,String>> list = new ArrayList<>();
 //        list.stream().
 //        String s = "伊文彬123";
 //        System.out.println(s.length());
-        testGroup();
+//        testGroup();
     }
 
     public static void testGroup(){
@@ -148,6 +148,14 @@ public class testStream {
         System.out.println(collect3);
         //判断是否存在某个元素
 //        students.stream().allMatch()
+
+
+        List<Student> students2 = ititList();
+        // 转为set是为了去重
+        ArrayList<Student> collect4 = students2.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Student::getName))), ArrayList::new));
+        List<Student> collect5 = students2.stream().sorted(Comparator.comparing(Student::getName)).collect(Collectors.toList());
+        System.out.println(collect4);
+        System.out.println(collect5);
     }
 }
 

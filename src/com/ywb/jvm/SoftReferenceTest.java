@@ -4,6 +4,7 @@ package com.ywb.jvm;
 import java.lang.ref.Reference;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.Arrays;
 
 /**
  * @Description: TODO
@@ -35,8 +36,13 @@ public class SoftReferenceTest {
         klav1 = null;
         System.gc();
         System.out.println(weakReference.get());
-
+//        ThreadLocal
         // 以为ThreadLocal 建议定义为static 这样可以保证有个强引用引用这这个ThreadLocal
         // 尽管threadLocalMap 中的key是弱引用 gc 也不会删除这个key
+        char [] chars = new char[] {'1','b','c','2'};
+        System.out.println(chars);
+
+
+        Arrays.asList();
     }
 }
