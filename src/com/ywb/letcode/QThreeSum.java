@@ -45,8 +45,6 @@ public class QThreeSum {
                     inner.add(nums[L]);
                     inner.add(nums[R]);
                     outer.add(inner);
-
-
                     while (L<R && nums[L] == nums[L+1])
                         L++;
                     while (L<R && nums[R] == nums[R-1])

@@ -11,5 +11,6 @@ public class testbigDecamal {
         BigDecimal b3= new BigDecimal(23.5);
         System.out.println(b1+"  "+b2);
         System.out.println(b3);
+        Integer.valueOf()
     }
 }
